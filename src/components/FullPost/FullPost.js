@@ -1,10 +1,19 @@
 import React, { Component } from 'react'
+import axios from 'axios'
 
 import './FullPost.css'
 
 class FullPost extends Component {
+  deletePostHandler = id => {
+    axios
+      .delete('https://jsonplaceholder.typicode.com/posts/' + id)
+      .then(response => {
+        console.log(response)
+      })
+  }
+
   render() {
-    const { title, content } = this.props
+    const { id, title, content } = this.props
 
     let post = <p>Please select a Post!</p>
     post = (
@@ -12,7 +21,9 @@ class FullPost extends Component {
         <h1>{title}</h1>
         <p>{content}</p>
         <div className="Edit">
-          <button className="Delete">Delete</button>
+          <button className="Delete" onClick={() => this.deletePostHandler(id)}>
+            Delete
+          </button>
         </div>
       </div>
     )
