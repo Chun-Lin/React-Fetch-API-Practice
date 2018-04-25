@@ -6,7 +6,7 @@ import './FullPost.css'
 class FullPost extends Component {
   deletePostHandler = id => {
     axios
-      .delete('https://jsonplaceholder.typicode.com/posts/' + id)
+      .delete('/posts/' + id)
       .then(response => {
         console.log(response)
       })
